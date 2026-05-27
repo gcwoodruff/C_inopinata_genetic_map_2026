@@ -1,0 +1,18 @@
+#!/bin/sh
+#SBATCH --partition=normal
+#SBATCH --ntasks=1
+#SBATCH --output=bwa_%J_stdout.txt
+#SBATCH --error=bwa_%J_stderr.txt
+#SBATCH --time=1-00:00:00
+#SBATCH --job-name=bwa
+#
+#################################################
+
+module load BWA/0.7.13-intel-2016a
+
+wkdir='/ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/inopinata_genetic_map_1-2024/'
+
+cd $wkdir/00_raw_seq_data/7458/
+bwa mem -M $wkdir/inopinata_genome/inopinata_sm_genome F2A-28_S167_L001_R1_001.fastq F2A-28_S167_L001_R2_001.fastq  > $wkdir/02_bwa/F2A-28.sam
+gzip F2A-28_S167_L001_R1_001.fastq
+gzip F2A-28_S167_L001_R2_001.fastq
