@@ -9,7 +9,7 @@
 #
 #################################################
 
-###note, these were run in parallel, each fastq with its own
+###note, these were run in parallel, each fastq file with its own script
 
 module load FastQC/0.11.5-Java-1.8.0_91
 
